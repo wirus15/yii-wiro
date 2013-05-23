@@ -17,8 +17,8 @@ class BooleanColumn extends CDataColumn
 	parent::init();
 	if(!$this->filter)
 	    $this->filter = array(
-		Yii::t('wiro.base', 'No'),
-		Yii::t('wiro.base', 'Yes'),
+		Yii::t('wiro', 'No'),
+		Yii::t('wiro', 'Yes'),
 	    );
     }
 }

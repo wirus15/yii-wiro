@@ -17,7 +17,7 @@ class PhpMessageSource extends CPhpMessageSource
     protected function getMessageFile($category, $language) 
     {
 	if(isset($this->sourcePaths[$category])) {
-	    return Yii::getPathOfAlias($this->sourcePaths[$category]).DIRECTORY_SEPARATOR.$language.DIRECTORY_SEPARATOR.$category.'.php';
+	    return Yii::getPathOfAlias($this->sourcePaths[$category]).DIRECTORY_SEPARATOR.$language.DIRECTORY_SEPARATOR.$category.'.php';    
 	} else {
 	    return parent::getMessageFile($category, $language);
 	}
