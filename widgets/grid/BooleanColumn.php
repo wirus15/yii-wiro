@@ -3,6 +3,7 @@
 namespace wiro\widgets\grid;
 
 use CDataColumn;
+use Yii;
 
 /**
  * @author Maciej Krawczyk <wirus15@gmail.com>
