@@ -1,3 +1,31 @@
 {
-	"name": "wirus15/yii-wiro"
+	"name": "wirus15/yii-wiro",
+	"repositories": [
+	    {
+		"type": "vcs",
+		"url": "https://github.com/yiisoft/yii"
+	    },
+	    {
+		"type": "vcs",
+		"url": "https://github.com/wirus15/yii-wiro"
+	    },
+	    {
+		"type": "vcs",
+		"url": "https://github.com/wirus15/PHPThumb"
+	    },
+	    {
+		"type": "vcs",
+		"url": "https://github.com/wirus15/YiiBooster"
+	    },
+	    {
+		"type": "composer",
+		"url": "http://packages.phundament.com"
+	    }
+	],
+	"require" : {
+	    "yiisoft/yii": "dev-master",
+	    "masterexploder/PHPThumb": "dev-master",
+	    "leafo/lessphp": "0.3.*@dev",
+	    "clevertech/YiiBooster": "dev-master"
+	}
 }

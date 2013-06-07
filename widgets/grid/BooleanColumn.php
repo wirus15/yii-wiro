@@ -2,13 +2,15 @@
 
 namespace wiro\widgets\grid;
 
-use CDataColumn;
 use Yii;
+use TbDataColumn;
+
+Yii::import('bootstrap.widgets.TbDataColumn');
 
 /**
  * @author Maciej Krawczyk <wirus15@gmail.com>
  */
-class BooleanColumn extends CDataColumn 
+class BooleanColumn extends TbDataColumn
 {
     public $type = 'boolean';
     
@@ -17,8 +19,8 @@ class BooleanColumn extends CDataColumn
 	parent::init();
 	if(!$this->filter)
 	    $this->filter = array(
-		Yii::t('wiro', 'No'),
-		Yii::t('wiro', 'Yes'),
+		Yii::app()->format->boolean(false),
+		Yii::app()->format->boolean(true),
 	    );
     }
 }
