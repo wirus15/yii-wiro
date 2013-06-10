@@ -4,6 +4,7 @@ namespace wiro\widgets\contact;
 
 use CMap;
 use CWidget;
+use TbHtml;
 use wiro\components\mail\YiiMailMessage;
 use Yii;
 
@@ -21,6 +22,7 @@ class ContactForm extends CWidget
     public $view = 'default';
     public $captchaOptions = array();
     public $useCaptcha = false;
+    public $ajaxSubmit = false;
     private $model;
     private $messageSent = false;
 
@@ -37,6 +39,26 @@ class ContactForm extends CWidget
 		    ),
 		), $this->captchaOptions);
 	$this->model->captchaAction = $this->captchaOptions['captchaAction'];
+	
+	if($this->ajaxSubmit) {
+	    Yii::app()->clientScript->registerScript($this->id, '
+		$("body").on("submit", "#'.$this->id.' form", function(e) {
+		    e.preventDefault();
+		    var form = $(this);
+		    var data = form.serialize();
+		    var url = form.attr("action");
+		    
+		    form.find("input,textarea,button")
+			.addClass("disabled")
+			.attr("disabled", true);
+			
+		    $.post(url, data, function(html) {
+			var content = $(html).find("#'.$this->id.'").html();
+			$("#'.$this->id.'").html(content);
+		    });
+		});
+	    ');
+	}
     }
 
     public function run()
@@ -51,9 +73,11 @@ class ContactForm extends CWidget
 	}
 
 	$this->model->token = $this->generateToken();
+	echo '<div id="'.$this->id.'">';
 	$this->render($this->view, array(
 	    'model' => $this->model,
 	));
+	echo '</div>';
     }
 
     private function send()
