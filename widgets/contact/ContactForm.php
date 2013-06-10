@@ -25,7 +25,7 @@ class ContactForm extends CWidget
     public $ajaxSubmit = false;
     private $model;
     private $messageSent = false;
-
+    
     public function init()
     {
 	$this->model = Yii::createComponent($this->modelClass);
@@ -39,26 +39,6 @@ class ContactForm extends CWidget
 		    ),
 		), $this->captchaOptions);
 	$this->model->captchaAction = $this->captchaOptions['captchaAction'];
-	
-	if($this->ajaxSubmit) {
-	    Yii::app()->clientScript->registerScript($this->id, '
-		$("body").on("submit", "#'.$this->id.' form", function(e) {
-		    e.preventDefault();
-		    var form = $(this);
-		    var data = form.serialize();
-		    var url = form.attr("action");
-		    
-		    form.find("input,textarea,button")
-			.addClass("disabled")
-			.attr("disabled", true);
-			
-		    $.post(url, data, function(html) {
-			var content = $(html).find("#'.$this->id.'").html();
-			$("#'.$this->id.'").html(content);
-		    });
-		});
-	    ');
-	}
     }
 
     public function run()
@@ -74,6 +54,8 @@ class ContactForm extends CWidget
 
 	$this->model->token = $this->generateToken();
 	echo '<div id="'.$this->id.'">';
+	if($this->ajaxSubmit)
+	    echo $this->ajaxSubmitScript();
 	$this->render($this->view, array(
 	    'model' => $this->model,
 	));
@@ -106,5 +88,27 @@ class ContactForm extends CWidget
 	$token = uniqid();
 	Yii::app()->user->setState(self::TOKEN_VAR, $token);
 	return $token;
+    }
+    
+    private function ajaxSubmitScript() {
+	return '<script>
+		(function($) {
+		    $("#'.$this->id.' form").submit(function(e) {
+			e.preventDefault();
+			var form = $(this);
+			var data = form.serialize();
+			var url = form.attr("action");
+
+			form.find("input,textarea,button")
+			    .addClass("disabled")
+			    .attr("disabled", true);
+
+			$.post(url, data, function(html) {
+			    var content = $(html).find("#'.$this->id.'").html();
+			    $("#'.$this->id.'").html(content);
+			});
+		    });
+		})(jQuery);
+	    </script>';
     }
 }
