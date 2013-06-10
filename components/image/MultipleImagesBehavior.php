@@ -35,7 +35,9 @@ class MultipleImagesBehavior extends AbstractImageBehavior
 		    $images[] = $this->createImage($file, $attribute);
 	    }
 	    
-	    $this->owner->$attribute = array_merge($this->originalValues[$attribute], $images);
+	    $this->owner->$attribute = isset($this->originalValues[$attribute])
+		    ? array_merge($this->originalValues[$attribute], $images)
+		    : $images;
         }
 	parent::beforeSave($event);
     }
