@@ -1,7 +1,6 @@
 {
 	"name": "wirus15/yii-wiro",
 	"require" : {
-	    "yiisoft/yii": "dev-master",
 	    "masterexploder/PHPThumb": "dev-master",
 	    "leafo/lessphp": "0.3.*@dev",
 	    "clevertech/YiiBooster": "dev-master"
