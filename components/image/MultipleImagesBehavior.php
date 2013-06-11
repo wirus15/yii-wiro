@@ -45,7 +45,7 @@ class MultipleImagesBehavior extends AbstractImageBehavior
     public function afterDelete($event)
     {
 	foreach($this->attributes as $attribute => $params) {
-	    if($params['removeOnDelete']) {
+	    if($this->getParam($attribute, 'removeOnDelete')) {
 		foreach($this->originalValues[$attribute] as $image) 
 		    @ unlink($image->path);
 	    }
