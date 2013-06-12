@@ -8,6 +8,7 @@ use CController;
 use CDbCriteria;
 use CHttpException;
 use CModel;
+use wiro\helpers\DefaultAttributes;
 use Yii;
 
 /**
@@ -23,10 +24,19 @@ use Yii;
  */
 class Controller extends CController
 {
-    public $metaKeywords = array();
-    public $metaDescription = array();
+    public $metaKeywords;
+    public $metaDescription;
     public $breadcrumbs;
 
+    public function init()
+    {
+	parent::init();
+	DefaultAttributes::set($this, array(
+	    'metaKeywords' => isset(Yii::app()->params->metaKeywords) ? Yii::app()->params->metaKeywords : '',
+	    'metaDescription' => isset(Yii::app()->params->metaDescription) ? Yii::app()->params->metaDescription : '',
+	));
+    }
+    
     /**
      * Gets a param
      * @param $name
