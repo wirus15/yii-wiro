@@ -1,7 +1,13 @@
 {
 	"name": "wirus15/yii-wiro",
+	"repositories": [
+	    {
+		"type": "vcs",
+		"url": "https://github.com/wirus15/PHPThumb"
+	    },
+	],
 	"require" : {
-	    "masterexploder/PHPThumb": "dev-master",
+	    "masterexploder/phpthumb": "dev-master",
 	    "leafo/lessphp": "0.3.*@dev",
 	    "clevertech/YiiBooster": "dev-master"
 	}
