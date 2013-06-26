@@ -4,7 +4,7 @@
 	    {
 		"type": "vcs",
 		"url": "https://github.com/wirus15/PHPThumb"
-	    },
+	    }
 	],
 	"require" : {
 	    "masterexploder/phpthumb": "dev-master",
