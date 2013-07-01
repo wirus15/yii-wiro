@@ -18,6 +18,14 @@ use Yii;
  */
 class ActiveRecord extends CActiveRecord
 {
+    public function getFormName()
+    {
+	$class = get_class($this);
+	if(strpos($class, '\\') !== false)
+	    return str_replace ('\\', '_', $class);
+	return $class;
+    }
+    
     /**
      * default form ID for the current model. Defaults to get_class()+'-form'
      */

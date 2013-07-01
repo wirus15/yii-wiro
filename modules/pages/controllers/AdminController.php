@@ -33,11 +33,10 @@ class AdminController extends Controller
     
     public function actionIndex()
     {
-	$pageClass = $this->module->pageClass;
-	$model = new $pageClass('search');
+	$model = $this->module->pageFactory->create('search');
 	$model->unsetAttributes(); 
-	if ($data = $this->getQueryData())
-	    $model->attributes = $data;
+	if (isset($_POST[$model->formName]))
+	    $model->attributes = $_POST[$model->formName];
 	$this->render('index', array(
 	    'model' => $model,
 	));
@@ -45,10 +44,9 @@ class AdminController extends Controller
     
     public function actionCreate()
     {
-	$pageClass = $this->module->pageClass;
-	$model = new $pageClass();
-	if($data = $this->getPostData()) {
-	    $model->attributes = $data;
+	$model = $this->module->pageFactory->create();
+	if(isset($_POST[$model->formName])) {
+	    $model->attributes = $_POST[$model->formName];
 	    if($model->save())
 	        $this->redirect (array('index'));
 	}
@@ -60,10 +58,9 @@ class AdminController extends Controller
     
     public function actionUpdate($id)
     {
-	$pageClass = $this->module->pageClass;
 	$model = $this->module->loadPage($id);
-	if($data = $this->getPostData()) {
-	    $model->attributes = $data;
+	if(isset($_POST[$model->formName])) {
+	    $model->attributes = $_POST[$model->formName];
 	    if($model->save())
 	        $this->redirect (array('index'));
 	}
@@ -78,23 +75,5 @@ class AdminController extends Controller
 	$model = $this->module->loadPage($id);
 	$model->delete();
 	$this->redirect(array('index'));
-    }
-    
-    private function getPostData()
-    {
-	$class = str_replace('\\', '_', $this->module->pageClass);
-	if(isset($_POST[$class]))
-	    return $_POST[$class];
-	else
-	    return null;
-    }
-    
-    private function getQueryData()
-    {
-	$class = str_replace('\\', '_', $this->module->pageClass);
-	if(isset($_GET[$class]))
-	    return $_GET[$class];
-	else
-	    return null;
     }
 }

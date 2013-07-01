@@ -13,11 +13,17 @@ use Yii;
 class PagesModule extends CWebModule
 {
     public $defaultController = 'admin';
-    public $pageClass = 'wiro\modules\pages\models\Page';
+    public $controllerNamespace = 'wiro\modules\pages\controllers';
     
-    public $controllerMap = array(
-	'admin' => 'wiro\modules\pages\controllers\AdminController',
-    );
+    protected function preinit()
+    {
+	$this->setComponents(array(
+	    'pageFactory' => array(
+		'class' => 'wiro\modules\pages\components\PageFactory',
+	    ),
+	));
+	parent::preinit();
+    }
     
     /**
      * Returns the data model based on the primary key given in the GET variable.
@@ -27,9 +33,8 @@ class PagesModule extends CWebModule
      */
     public function loadPage($id)
     {
-	$primaryKey = ActiveRecord::model($this->pageClass)->tableSchema->primaryKey;
-	$model = ActiveRecord::model($this->pageClass)->find(array(
-	    'condition' => $primaryKey.'=:id OR pageAlias=:id',
+	$model = $this->pageFactory->find(array(
+	    'condition' => 'pageId=:id OR pageAlias=:id',
 	    'params' => array(':id' => $id),
 	));
 	if ($model === null)

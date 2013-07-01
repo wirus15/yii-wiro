@@ -4,9 +4,9 @@ namespace wiro\modules\pages\models;
 
 use CActiveDataProvider;
 use CDbCriteria;
+use wiro\base\ActiveRecord;
 use wiro\helpers\DateHelper;
 use Yii;
-use wiro\base\ActiveRecord;
 
 class Page extends ActiveRecord
 {
