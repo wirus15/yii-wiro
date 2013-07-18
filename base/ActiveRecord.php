@@ -3,7 +3,6 @@
 namespace wiro\base;
 
 use CActiveRecord;
-use Yii;
 
 /**
  * EActiveRecord class
@@ -18,14 +17,6 @@ use Yii;
  */
 class ActiveRecord extends CActiveRecord
 {
-    public function getFormName()
-    {
-	$class = get_class($this);
-	if(strpos($class, '\\') !== false)
-	    return str_replace ('\\', '_', $class);
-	return $class;
-    }
-    
     /**
      * default form ID for the current model. Defaults to get_class()+'-form'
      */
@@ -82,43 +73,5 @@ class ActiveRecord extends CActiveRecord
 	    $this->_listId = strtolower(get_class($this)) . '-list';
 	    return $this->_listId;
 	}
-    }
-
-    /**
-     * Logs the record update information.
-     * Updates the four columns: create_user_id, create_date, last_update_user_id and last_update_date.
-     */
-    protected function logUpdate()
-    {
-	$userId = php_sapi_name() === 'cli' ? -1 : Yii::app()->user->id;
-
-	foreach(array('create_user_id' => $userId, 'create_date' => time()) as $attribute => $value)
-	    $this->updateLogAttribute($attribute, $value, (!($userId === -1 || Yii::app()->user->isGuest) && $this->isNewRecord));
-
-	foreach(array('last_update_user_id' => $userId, 'last_update_date' => time()) as $attribute => $value)
-	    $this->updateLogAttribute($attribute, $value, (!($userId === -1 || Yii::app()->user->isGuest) && !$this->isNewRecord));
-    }
-
-    /**
-     * Helper function to update attributes
-     * @param $attribute
-     * @param $value
-     * @param $check
-     */
-    protected function updateLogAttribute($attribute, $value, $check)
-    {
-
-	if($this->hasAttribute($attribute) && $check)
-	    $this->$attribute = $value;
-    }
-
-    /**
-     * updates the log fields before saving
-     * @return boolean
-     */
-    public function beforeSave()
-    {
-	$this->logUpdate();
-	return parent::beforeSave();
     }
 }

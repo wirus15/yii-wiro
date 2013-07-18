@@ -27,6 +27,7 @@ class Controller extends CController
     public $metaKeywords;
     public $metaDescription;
     public $breadcrumbs;
+    public $emailSubject;
 
     public function init()
     {

@@ -3,6 +3,7 @@
 	"require" : {
 	    "masterexploder/phpthumb": "dev-master",
 	    "leafo/lessphp": "0.3.*@dev",
-	    "clevertech/YiiBooster": "dev-master"
+	    "clevertech/YiiBooster": "dev-master",
+	    "swiftmailer/swiftmailer": "5.1.*@dev"
 	}
 }
