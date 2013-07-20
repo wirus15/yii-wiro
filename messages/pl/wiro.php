@@ -6,4 +6,7 @@ return array(
     'Name' => 'Imię i nazwisko',
     'Subject' => 'Temat',
     'Body' => 'Treść',
+    'Username' => 'Login',
+    'Password' => 'Hasło',
+    'Confirm password' => 'Powtórz hasło',
 );

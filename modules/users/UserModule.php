@@ -10,9 +10,9 @@ use Yii;
 
 class UserModule extends CWebModule
 {
-    const NO_ACTIVATION = 0;
-    const USER_ACTIVATION = 1;
-    const ADMIN_ACTIVATION = 2;
+    const NO_ACTIVATION = 'none';
+    const USER_ACTIVATION = 'user';
+    const ADMIN_ACTIVATION = 'admin';
     
     public $allowRegistration = true;
     

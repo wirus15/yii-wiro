@@ -3,6 +3,7 @@
 namespace wiro\modules\login\controllers;
 
 use wiro\base\Controller;
+use wiro\helpers\FormHelper;
 use wiro\modules\login\models\LoginForm;
 use Yii;
 
@@ -21,8 +22,8 @@ class DefaultController extends Controller
     public function actionLogin()
     {
 	$model = new LoginForm();
-	if(isset($_POST[$model->formName])) {
-	    $model->attributes = $_POST[$model->formName];
+	if(FormHelper::hasData($model)) {
+	    $model->attributes = FormHelper::getData($model);
 	    if($model->validate() && $model->login())
 		$this->redirect(Yii::app()->user->returnUrl);
 	}

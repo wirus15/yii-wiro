@@ -3,6 +3,7 @@
 namespace wiro\modules\users\components;
 
 use CApplicationComponent;
+use Yii;
 
 /**
  * @author Maciej Krawczyk <wirus15@gmail.com>
@@ -20,8 +21,8 @@ class ProfileFactory extends CApplicationComponent
     {
 	$profile = null;
 	if($this->profileClass !== null) {
-	    $class = $this->profileClass;
-	    $profile = new $class($scenario);
+	    $profile = Yii::createComponent($this->profileClass);
+	    $profile->scenario = $scenario;
 	    $profile->userId = $user->userId;
 	}
 	return $profile;

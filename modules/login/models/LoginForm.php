@@ -2,7 +2,7 @@
 
 namespace wiro\modules\login\models;
 
-use wiro\base\FormModel;
+use CFormModel;
 use wiro\modules\login\components\UserIdentity;
 use Yii;
 
@@ -11,7 +11,7 @@ use Yii;
  * LoginForm is the data structure for keeping
  * user login form data. It is used by the 'login' action of 'SiteController'.
  */
-class LoginForm extends FormModel
+class LoginForm extends CFormModel
 {
     public $username;
     public $password;
