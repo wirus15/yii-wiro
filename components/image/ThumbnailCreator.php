@@ -8,7 +8,7 @@ use PhpThumbFactory;
 use wiro\helpers\PathHelper;
 use Yii;
 
-require_once Yii::getPathOfAlias('vendor.masterexploder.PHPThumb.src').'/ThumbLib.inc.php';
+require_once Yii::getPathOfAlias('vendor.masterexploder.phpthumb.src').'/ThumbLib.inc.php';
 
 /**
  * @author Maciej Krawczyk <wirus15@gmail.com>
