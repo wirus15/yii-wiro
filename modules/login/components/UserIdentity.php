@@ -6,9 +6,7 @@ use CUserIdentity;
 use Yii;
 
 /**
- * UserIdentity represents the data needed to identity a user.
- * It contains the authentication method that checks if the provided
- * data can identity the user.
+ * @author Maciej Krawczyk <wirus15@gmail.com>
  */
 class UserIdentity extends CUserIdentity
 {

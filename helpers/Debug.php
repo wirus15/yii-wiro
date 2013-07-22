@@ -2,6 +2,7 @@
 
 namespace wiro\helpers;
 
+use CHtml;
 use CVarDumper;
 
 /**
@@ -11,7 +12,7 @@ class Debug
 {
     public static function prnt($value, $die = true)
     {
-	echo '<pre>'.html(print_r($value, 1)).'</pre>';
+	echo '<pre>'.CHtml::encode(print_r($value, 1)).'</pre>';
 	if($die) die();
     }
     
