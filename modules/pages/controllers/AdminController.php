@@ -3,6 +3,7 @@
 namespace wiro\modules\pages\controllers;
 
 use wiro\base\Controller;
+use wiro\helpers\FormHelper;
 
 /**
  * @author Maciej Krawczyk <wirus15@gmail.com>
@@ -35,8 +36,8 @@ class AdminController extends Controller
     {
 	$model = $this->module->pageFactory->create('search');
 	$model->unsetAttributes(); 
-	if (isset($_POST[$model->formName]))
-	    $model->attributes = $_POST[$model->formName];
+	if (FormHelper::hasData($model, 'get'))
+	    $model->attributes = FormHelper::getData($model, 'get');
 	$this->render('index', array(
 	    'model' => $model,
 	));
@@ -45,8 +46,8 @@ class AdminController extends Controller
     public function actionCreate()
     {
 	$model = $this->module->pageFactory->create();
-	if(isset($_POST[$model->formName])) {
-	    $model->attributes = $_POST[$model->formName];
+	if (FormHelper::hasData($model)) {
+	    $model->attributes = FormHelper::getData($model);
 	    if($model->save())
 	        $this->redirect (array('index'));
 	}
@@ -59,8 +60,8 @@ class AdminController extends Controller
     public function actionUpdate($id)
     {
 	$model = $this->module->loadPage($id);
-	if(isset($_POST[$model->formName])) {
-	    $model->attributes = $_POST[$model->formName];
+	if (FormHelper::hasData($model)) {
+	    $model->attributes = FormHelper::getData($model);
 	    if($model->save())
 	        $this->redirect (array('index'));
 	}
