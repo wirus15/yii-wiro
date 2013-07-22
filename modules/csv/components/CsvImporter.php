@@ -42,15 +42,22 @@ class CsvImporter extends CComponent
     private function importFromFile($file)
     {
 	$tableName = pathinfo($file, PATHINFO_FILENAME);
-	$primaryKey = Yii::app()->db->schema->tables[$tableName]->primaryKey;
+	$tableSchema = Yii::app()->db->schema->tables[$tableName]; 
+	$primaryKey = $tableSchema->primaryKey;
 	$existingPks = array_flip(Yii::app()->db->createCommand()->select($primaryKey)->from($tableName)->queryColumn());
 	
 	$file = fopen($file, 'r');
 	$columnNames = fgetcsv($file);
 	$keyPos = array_search($primaryKey, $columnNames);
+	
 	while($row=fgetcsv($file)) {
 	    $pkValue = $row[$keyPos];
 	    $columns = array_combine($columnNames, $row);
+	    array_walk($columns, function(&$item, $key) use ($tableSchema) {
+		if($item === '' && $tableSchema->getColumn($key)->allowNull)
+		    $item = null;
+	    });
+	    
 	    $cmd = Yii::app()->db->createCommand();
 	    if(isset($existingPks[$pkValue])) {
 		unset($columns[$primaryKey]);
