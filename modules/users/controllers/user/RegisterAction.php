@@ -3,6 +3,7 @@
 namespace wiro\modules\users\controllers\user;
 
 use CAction;
+use CHttpException;
 use wiro\components\mail\YiiMailMessage;
 use wiro\helpers\FormHelper;
 use wiro\modules\users\models\User;
@@ -21,9 +22,9 @@ class RegisterAction extends CAction
     public function run()
     {
 	if(!$this->controller->module->allowRegistration)
-	    throw new \CHttpException(403, 'User registration is disabled.');
+	    throw new CHttpException(403, 'User registration is disabled.');
 	
-	$user = new User();
+	$user = new User('register');
 	$profile = $this->controller->module->createProfile($user);
 	
 	if(Yii::app()->request->isPostRequest) {

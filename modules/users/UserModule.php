@@ -24,8 +24,6 @@ class UserModule extends CWebModule
 	    
     public $controllerMap = array(
 	'login' => 'wiro\modules\users\controllers\LoginController',
-	'user' => 'wiro\modules\users\controllers\UserController',
-	'admin' => 'wiro\modules\users\controllers\AdminController',
     );
     
     /**

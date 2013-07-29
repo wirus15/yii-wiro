@@ -2,10 +2,11 @@
 
 namespace wiro\modules\config\controllers;
 
+use TbEditableSaver;
 use wiro\base\Controller;
 use wiro\components\config\DbConfigValue;
+use wiro\helpers\FormHelper;
 use Yii;
-use TbEditableSaver;
 
 /**
  * @author Maciej Krawczyk <wirus15@gmail.com>
@@ -46,8 +47,8 @@ class DefaultController extends Controller
     {
 	$model = new DbConfigValue('search');
 	$model->unsetAttributes(); 
-	if (isset($_GET[$model->formName]))
-	    $model->attributes = $_GET[$model->formName];
+	if(FormHelper::hasData($model, 'get'))
+            $model->attributes = FormHelper::getData ($model, 'get');
 
 	$this->render('index', array(
 	    'model' => $model,
@@ -63,8 +64,8 @@ class DefaultController extends Controller
     public function actionCreate()
     {
 	$model = new DbConfigValue();
-	if (isset($_POST[$model->formName])) {
-	    $model->attributes = $_POST[$model->formName];
+	if (FormHelper::hasData($model)) {
+	    $model->attributes = FormHelper::getData($model);
 	    $model->save();
 	}
 	$this->redirect(array('index'));

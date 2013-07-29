@@ -41,9 +41,10 @@ class AdminController extends Controller
 
     public function actions()
     {
-	return array(
+	return array (
 	    'view' => 'wiro\modules\users\controllers\user\ViewAction',
 	    'update' => 'wiro\modules\users\controllers\user\UpdateAction',
+            'create' => 'wiro\modules\users\controllers\admin\CreateAction',
 	    'activate' => 'wiro\modules\users\controllers\admin\ActivateAction',
 	    'index' => 'wiro\modules\users\controllers\admin\IndexAction',
 	    'suspend' => 'wiro\modules\users\controllers\admin\SuspendAction',

@@ -11,6 +11,7 @@ Yii::import('wiro.modules.auth.components.AuthWebUser');
 
 class WebUser extends AuthWebUser
 {
+    public $admins = array();
     /**
      *
      * @var array

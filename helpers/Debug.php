@@ -18,7 +18,11 @@ class Debug
     
     public static function dump($value, $die = true)
     {
+        echo '<pre>';
+        ob_start();
 	CVarDumper::dump($value);
+        echo CHtml::encode(ob_get_clean());
+        echo '</pre>';
 	if($die) die();
     }
     

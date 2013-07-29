@@ -1,7 +1,7 @@
 <fieldset>
     <legend>Manage Users</legend>
 
-
+    <?= TbHtml::linkButton('Create new user', array('url'=>array('create'), 'color'=>'primary', 'icon'=>'icon-plus white-icon')); ?>
 <?php
 $this->widget('bootstrap.widgets.TbGridView', array(
     'id' => 'user-grid',

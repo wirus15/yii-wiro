@@ -1,27 +1,3 @@
-<?php
-/*$this->menu = array(
-    array('label' => 'CURRENT USER'),
-    array('label' => 'Activate', 'url' => array('activate', 'id' => $model->userId), 'visible' => !$model->active, 'icon' => 'ok'),
-    array('label' => 'Update', 'icon' => 'pencil', 'items' => array(
-	array('label' => 'Account', 'url' => array('/user/admin/update', 'id' => $model->userId)),
-	array('label' => 'Profile', 'url' => array('/user/admin/profile', 'id' => $model->userId)),
-    )),
-    array('label' => 'Roles', 'url' => array('roles', 'id' => $model->userId), 'icon' => 'tasks', 'linkOptions' => array('class' => 'open-modal', 'data-size' => 'small')),
-    array('label' => 'Suspend', 'url' => array('suspend', 'id' => $model->userId), 'visible' => !$model->suspended, 'icon' => 'ban-circle'),
-    array('label' => 'Unsuspend', 'url' => array('unsuspend', 'id' => $model->userId), 'visible' => $model->suspended, 'icon' => 'ok-sign'),
-    array('label' => 'Delete', 'url' => array('delete', 'id' => $model->userId), 'linkOptions' => array('class' => 'delete-confirm', 'data-text' => 'Are you sure you want to delete this item?'), 'icon' => 'trash'),
-    array('label' => 'USERS'),
-    array('label' => 'Users list', 'url' => array('/user/admin/index'), 'icon' => 'user'),
-    array('label' => 'OTHER'),
-    array('label' => 'Notifications', 'icon' => 'envelope', 'items' => array(
-	    array('label' => 'Email messages', 'url' => array('/user/config/notifications', 'type' => 'email')),
-	    array('label' => 'Flash messages', 'url' => array('/user/config/notifications', 'type' => 'flash')),
-    )),
-    //array('label' => 'Config', 'url' => array('/user/config/settings'), 'icon' => 'cog'),
-);*/
-
-?>
-
 <fieldset>
     <legend>User <i><?php echo $model->username; ?></i></legend>
 

@@ -60,10 +60,10 @@ class User extends ActiveRecord
     {
 	return array(
 	    array('username, password, email', 'required'),
-	    array('confirmPassword', 'required', 'on'=>'insert'),
+	    array('confirmPassword', 'required', 'on'=>'register'),
 	    array('username, password, email, role', 'length', 'max' => 80),
 	    array('email', 'email'),
-	    array('confirmPassword', 'compare', 'compareAttribute' => 'password', 'on' => 'insert'),
+	    array('confirmPassword', 'compare', 'compareAttribute' => 'password', 'on' => 'register'),
 	    array('activationCode', 'default', 'value' => StringHelper::getRandom()),
 	    array('active', 'default', 'value' => Yii::app()->getModule('user')->accountActivation === UserModule::NO_ACTIVATION),
 	    array('suspended', 'default', 'value' => false),
@@ -148,6 +148,6 @@ class User extends ActiveRecord
     
     public function getHasProfile()
     {
-	return $this->hasRelated('profile');
+	return $this->profile !== null;
     }
 }

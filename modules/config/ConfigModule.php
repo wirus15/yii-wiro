@@ -9,6 +9,7 @@ use CWebModule;
  */
 class ConfigModule extends CWebModule
 {
+    public $layout = '//layouts/admin';
     public $controllerNamespace = 'wiro\modules\config\controllers';
 }
 
