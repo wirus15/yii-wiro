@@ -49,6 +49,7 @@ class ContactForm extends CWidget
 	));
 	
 	$this->processSubmittedForm();
+	$this->model->token = $this->generateToken();
 	$this->renderFormHeader();
     }
     
@@ -81,7 +82,6 @@ class ContactForm extends CWidget
 		'model' => $this->model,
 	    ));
 	}
-	$this->model->token = $this->generateToken();
 	$this->endWidget();
 	echo '</div>';
     }
