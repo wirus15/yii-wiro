@@ -21,7 +21,7 @@ class ContactForm extends CWidget
     
     public $emailAddress;
     public $modelClass = 'wiro\widgets\contact\ContactFormModel';
-    public $formClass;
+    public $formClass = 'CActiveForm';
     public $formOptions = array();
     public $view = self::VIEW_DEFAULT;
     public $useCaptcha = false;
@@ -30,42 +30,6 @@ class ContactForm extends CWidget
     private $model;
     private $messageSent = false;
     private $form;
-    
-    public function __get($name)
-    {
-	try {
-	    return parent::__get($name);
-	} catch (CException $e) {
-	    return $this->form->__get($name);
-	}
-    }
-    
-    public function __set($name, $value)
-    {
-	try {
-	    return parent::__set($name, $value);
-	} catch (CException $e) {
-	    return $this->form->__set($name, $value);
-	}
-    }
-    
-    public function __isset($name)
-    {
-	try {
-	    return parent::__isset($name);
-	} catch (CException $e) {
-	    return $this->form->__isset($name);
-	}
-    }
-    
-    public function __unset($name)
-    {
-	try {
-	    return parent::__unset($name);
-	} catch (CException $e) {
-	    return $this->form->__unset($name);
-	}
-    }
     
     public function init()
     {
@@ -175,5 +139,41 @@ class ContactForm extends CWidget
 		    });
 		})(jQuery);
 	    </script>';
+    }
+    
+    public function __get($name)
+    {
+	try {
+	    return parent::__get($name);
+	} catch (CException $e) {
+	    return $this->form->__get($name);
+	}
+    }
+    
+    public function __set($name, $value)
+    {
+	try {
+	    return parent::__set($name, $value);
+	} catch (CException $e) {
+	    return $this->form->__set($name, $value);
+	}
+    }
+    
+    public function __isset($name)
+    {
+	try {
+	    return parent::__isset($name);
+	} catch (CException $e) {
+	    return $this->form->__isset($name);
+	}
+    }
+    
+    public function __unset($name)
+    {
+	try {
+	    return parent::__unset($name);
+	} catch (CException $e) {
+	    return $this->form->__unset($name);
+	}
     }
 }
