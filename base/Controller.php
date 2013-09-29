@@ -121,4 +121,13 @@ class Controller extends CController
 	    $baseUrl = Yii::app()->request->baseUrl;
 	return $baseUrl . '/' . ltrim($url, '/');
     }
+    
+    /**
+     * Getter for modelClass
+     * @return string
+     */
+    public function getModelClass()
+    {
+        return $this->modelClass;
+    }
 }
