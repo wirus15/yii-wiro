@@ -59,7 +59,7 @@ class Controller extends CController
      * @return CActiveRecord the model instance.
      * @throws CHttpException if the model cannot be found
      */
-    protected function loadModel($id, $class=null, $criteria = array(), $exceptionOnNull = true)
+    public function loadModel($id, $class=null, $criteria = array(), $exceptionOnNull = true)
     {
         $finder = CActiveRecord::model($class ?: $this->modelClass);
       
