@@ -28,6 +28,7 @@ class Controller extends CController
     public $metaDescription;
     public $breadcrumbs;
     public $emailSubject;
+    protected $modelClass;
 
     public function init()
     {
@@ -58,12 +59,13 @@ class Controller extends CController
      * @return CActiveRecord the model instance.
      * @throws CHttpException if the model cannot be found
      */
-    protected function loadModel($class, $id, $criteria = array(), $exceptionOnNull = true)
+    protected function loadModel($id, $class=null, $criteria = array(), $exceptionOnNull = true)
     {
+        $finder = CActiveRecord::model($class ?: $this->modelClass);
+      
 	if(empty($criteria))
-	    $model = CActiveRecord::model($class)->findByPk($id);
+	    $model = $finder->findByPk($id);
 	else {
-	    $finder = CActiveRecord::model($class);
 	    $c = new CDbCriteria($criteria);
 	    $c->mergeWith(array(
 		'condition' => $finder->tableSchema->primaryKey . '=:id',
