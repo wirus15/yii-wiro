@@ -1,5 +1,5 @@
 <div class="form-signin well">
-    <? $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'type' => TbHtml::FORM_LAYOUT_VERTICAL,
     )); ?>
 

@@ -3,7 +3,7 @@
 /* @var $model ContactFormModel */
 ?>
 
-<? $form = $this->beginWidget('CActiveForm', array('id' => 'contact-form')); ?>
+<?php $form = $this->beginWidget('CActiveForm', array('id' => 'contact-form')); ?>
 <?= $form->hiddenField($model, 'token'); ?>
 <div class="form">
 <?php if ($this->messageSent): ?>
