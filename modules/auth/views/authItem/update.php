@@ -5,9 +5,10 @@
 /* @var $form TbActiveForm */
 
 $this->breadcrumbs = array(
-	$this->capitalize($this->getTypeText(true)) => array('index'),
-	$item->description => array('view', 'name' => $item->name),
-	Yii::t('AuthModule.main', 'Edit'),
+    'Users' => array('/user/admin/index'),
+    $this->capitalize($this->getTypeText(true)) => array('index'),
+    $item->description => array('view', 'name' => $item->name),
+    Yii::t('AuthModule.main', 'Edit'),
 );
 ?>
 

@@ -8,6 +8,7 @@
 /* @var $childOptions array */
 
 $this->breadcrumbs = array(
+    'Users' => array('/user/admin/index'),
 	$this->capitalize($this->getTypeText(true)) => array('index'),
 	$item->description,
 );

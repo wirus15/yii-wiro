@@ -1,3 +1,8 @@
+<?php $this->breadcrumbs = array(
+    'Users' => array('index'),
+    'Create new user',
+); ?>
+
 <fieldset>
     <legend>Create new user</legend>
     

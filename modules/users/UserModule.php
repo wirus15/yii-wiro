@@ -52,6 +52,15 @@ class UserModule extends CWebModule
     {
 	parent::init();
 	$this->profileFactory = new ProfileFactory($this->profileClass);
+        $this->setModules(array(
+            'auth' => array(
+                'class' => 'wiro.modules.auth.AuthModule',
+                'userClass' => 'wiro\modules\users\models\User',
+                'userIdColumn' => 'userId',
+                'userNameColumn' => 'username',
+             ),
+        ));
+        Yii::setPathOfAlias('auth', Yii::getPathOfAlias('wiro.modules.auth'));
     }
     
     /**

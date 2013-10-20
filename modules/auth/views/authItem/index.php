@@ -3,7 +3,8 @@
 /* @var $dataProvider AuthItemDataProvider */
 
 $this->breadcrumbs = array(
-	$this->capitalize($this->getTypeText(true)),
+    'Users' => array('/user/admin/index'),
+    $this->capitalize($this->getTypeText(true)),
 );
 ?>
 

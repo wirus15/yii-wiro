@@ -4,6 +4,7 @@
 /* @var $form TbActiveForm */
 
 $this->breadcrumbs = array(
+        'Users' => array('/user/admin/index'),
 	$this->capitalize($this->getTypeText(true)) => array('index'),
 	Yii::t('AuthModule.main', 'New {type}', array('{type}' => $this->getTypeText())),
 );

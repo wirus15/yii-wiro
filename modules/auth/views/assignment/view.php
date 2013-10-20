@@ -7,6 +7,7 @@
 /* @var $assignmentOptions array */
 
 $this->breadcrumbs = array(
+    'Users' => array('/user/admin/index'),
     Yii::t('AuthModule.main', 'Assignments') => array('index'),
     CHtml::value($model, $this->module->userNameColumn),
 );

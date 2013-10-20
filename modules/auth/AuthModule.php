@@ -117,7 +117,7 @@ class AuthModule extends CWebModule
             $user = Yii::app()->getUser();
 
             if ($user instanceof AuthWebUser) {
-                if ($user->checkAccess('developer')) {
+                if ($user->checkAccess('admin')) {
                     return true;
                 } elseif ($user->isGuest) {
                     $user->loginRequired();

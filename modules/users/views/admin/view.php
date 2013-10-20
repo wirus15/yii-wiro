@@ -1,3 +1,9 @@
+<?php $this->breadcrumbs = array(
+    'Users' => array('index'),
+    $model->username,
+); ?>
+
+
 <fieldset>
     <legend>User <i><?php echo $model->username; ?></i></legend>
 
