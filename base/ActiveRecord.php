@@ -3,6 +3,7 @@
 namespace wiro\base;
 
 use CActiveRecord;
+use CHtml;
 
 /**
  * EActiveRecord class
@@ -73,5 +74,11 @@ class ActiveRecord extends CActiveRecord
 	    $this->_listId = strtolower(get_class($this)) . '-list';
 	    return $this->_listId;
 	}
+    }
+    
+    public function listModels($nameColumn, $criteria=array())
+    {
+        $models = $this ->findAll($criteria);
+        return CHtml::listData($models, $this->tableSchema->primaryKey, $nameColumn);
     }
 }
