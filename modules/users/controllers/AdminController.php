@@ -9,8 +9,6 @@ use wiro\base\Controller;
  */
 class AdminController extends Controller
 {
-    public $layout = '//layouts/admin';
-    
     /**
      * @return array action filters
      */

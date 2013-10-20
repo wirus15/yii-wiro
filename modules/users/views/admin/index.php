@@ -1,5 +1,5 @@
 <fieldset>
-    <legend>Manage Users</legend>
+    <legend>Users</legend>
 
     <?= TbHtml::linkButton('Create new user', array('url'=>array('create'), 'color'=>'primary', 'icon'=>'icon-plus white-icon')); ?>
 <?php

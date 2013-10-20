@@ -22,11 +22,11 @@ class UpdateAction extends CAction
 	if(Yii::app()->request->isPostRequest) {
 	    if(FormHelper::hasData($model))
 		$model->attributes = FormHelper::getData ($model);
-	    if($model->profile && FormHelper::hasData($model->profile))
+	    if($model->hasProfile && FormHelper::hasData($model->profile))
 		$model->profile->attributes = FormHelper::getData($model->profile);
 
 	    $transaction = Yii::app()->db->beginTransaction();
-	    if($model->save() && (!$model->profile || $model->profile->save())) {
+	    if($model->save() && (!$model->hasProfile || $model->profile->save())) {
 		$transaction->commit();
 		$this->controller->redirect(array('view', 'id' => $model->userId));
 	    } else {

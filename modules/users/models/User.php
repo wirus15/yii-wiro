@@ -148,6 +148,6 @@ class User extends ActiveRecord
     
     public function getHasProfile()
     {
-	return $this->profile !== null;
+	return isset($this->profile);
     }
 }

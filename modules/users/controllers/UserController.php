@@ -9,8 +9,6 @@ use wiro\base\Controller;
  */
 class UserController extends Controller
 {
-    public $layout = '//layouts/main';
-    
     public $defaultAction = 'view';
     
     /**

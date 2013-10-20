@@ -14,7 +14,7 @@ class UserStatusColumn extends TbDataColumn
 {
     public $value = '';
     public $headerHtmlOptions = array('width'=>10);
-    
+    public $header = 'Status';
     /**
      * 
      * @param integer $row
