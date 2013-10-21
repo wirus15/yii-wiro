@@ -71,7 +71,7 @@ class ResetPasswordAction extends CAction
     
     private function sendPasswordToUser()
     {
-	$body = $this->controller->render('/email/resetPassword', array(
+	$body = $this->controller->renderPartial('/email/resetPassword', array(
 	    'password' => $this->newPassword,
 	    'link' => $this->controller->createAbsoluteUrl('/user/user/password'),
 	), true);

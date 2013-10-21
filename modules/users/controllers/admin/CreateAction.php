@@ -57,11 +57,11 @@ class CreateAction extends CAction
     
     private function sendUserNotification($user, $password)
     {
-        $body = $this->controller->render('/email/create', array(
+        $body = $this->controller->renderPartial('/email/create', array(
             'user' => $user,
             'password' => $password,
             'link' => $this->createLoginUrl(),
-	));
+	), true);
 	    
 	$message = new YiiMailMessage;
 	$message->setBody($body, 'text/html');

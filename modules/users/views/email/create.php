@@ -4,4 +4,12 @@
 
 <p>You may now log in using the following credentials:</p>
 
-<p>username: <?= CHtml::link($link, $link); ?></p>
+<p>
+    <strong>Username:</strong> <?= $user->username; ?><br/>
+    <strong>Password:</strong> <?= $password; ?>
+</p>
+
+<p>
+    Use this link to sign in:<br/>
+    <?= CHtml::link($link, $link); ?>
+</p>
