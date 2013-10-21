@@ -1,3 +1,8 @@
+<?php $this->breadcrumbs = array(
+    'Profile' => array('view'),
+    'Change password',
+); ?>
+
 <fieldset>
     <legend>Change password</legend>
 

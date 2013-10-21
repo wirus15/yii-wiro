@@ -1,3 +1,8 @@
+<?php $this->breadcrumbs = array(
+    'Profile' => array('view'),
+    'Update',
+); ?>
+
 <fieldset>
     <legend>Update user <i><?php echo $model->username; ?></i></legend>
     

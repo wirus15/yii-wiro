@@ -1,3 +1,7 @@
+<?php $this->breadcrumbs = array(
+    'Profile',
+); ?>
+
 <fieldset>
     <legend>User <i><?php echo $model->username; ?></i></legend>
 
