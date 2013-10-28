@@ -121,7 +121,10 @@ class User extends ActiveRecord
 	$criteria->compare('role', $this->role);
 	return new CActiveDataProvider($this, array(
 	    'criteria' => $criteria,
-	    ));
+            'pagination' => array(
+                'pageSize' => 30,
+            ),
+	));
     }
     
     protected function beforeSave()
