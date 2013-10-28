@@ -26,6 +26,12 @@ class CreateAction extends Action
      * @var Closure
      */
     public $beforeSave;
+    
+    /**
+     *
+     * @var Closure
+     */
+    public $afterSave;
 
     public function run()
     {
@@ -42,6 +48,9 @@ class CreateAction extends Action
                 $this->runClosure($this->beforeSave);
             }
             if ($this->model->save()) {
+                if (isset($this->afterSave)) {
+                    $this->runClosure($this->afterSave);
+                }
                 $this->redirect($this->redirectUrl ? : function($model) {
                         return array('view', 'id' => $model->primaryKey);
                     });
