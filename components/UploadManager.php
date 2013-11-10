@@ -44,7 +44,7 @@ class UploadManager extends CApplicationComponent
 	return $file->saveAs($fullpath) ? $filepath : false;
     }
     
-    public function getUploadedFile($model, $attribute)
+    public function getUploadedFile($model, $attribute=null)
     {
 	if($model instanceof CModel)
 	    return CUploadedFile::getInstance($model, $attribute);
@@ -52,7 +52,7 @@ class UploadManager extends CApplicationComponent
 	    return CUploadedFile::getInstanceByName ($model);
     }
     
-    public function getUploadedFiles($model, $attribute)
+    public function getUploadedFiles($model, $attribute=null)
     {
 	if($model instanceof CModel)
 	    return CUploadedFile::getInstances ($model, $attribute);
@@ -60,7 +60,7 @@ class UploadManager extends CApplicationComponent
 	    return CUploadedFile::getInstancesByName ($model);
     }
     
-    private function randomizeFileName($filename, $length = 15)
+    public function randomizeFileName($filename, $length = 15)
     {
 	$extension = pathinfo($filename, PATHINFO_EXTENSION);
 	return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length).'.'.$extension;
