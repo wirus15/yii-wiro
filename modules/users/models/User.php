@@ -100,7 +100,7 @@ class User extends ActiveRecord
     public function relations()
     {
 	$relations = array();
-	if($profileClass=Yii::app()->getModule('user')->profileClass)
+        if($profileClass=Yii::app()->getModule('user')->profileClass)
 	    $relations['profile'] = array(self::HAS_ONE, $profileClass, 'userId');
 	return $relations;
     }

@@ -30,10 +30,16 @@ abstract class Action extends CAction
     public $redirectUrl;
 
     /**
+     *
+     * @var callable
+     */
+    public $accessCheck;
+    
+    /**
      * @var CModel
      */
     protected $model;
-
+    
     /**
      * 
      * @param string $view

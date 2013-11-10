@@ -2,6 +2,7 @@
 
 namespace wiro\actions;
 
+use CHttpException;
 use Closure;
 
 /**
@@ -21,15 +22,21 @@ class DeleteAction extends Action
     public function run($id)
     {
         $this->model = $this->loadModel($id);
+        
+        if (isset($this->accessCheck) && !$this->runClosure($this->accessCheck)) {
+            throw new CHttpException(403, 'You are not authorized to perform this action.');
+        }
+        
         if (isset($this->beforeDelete)) {
             $this->runClosure($this->beforeDelete);
         }
+        
         $this->model->delete();
 
         if (!isset($_GET['ajax'])) {
             $this->redirect($this->redirectUrl ? : function() {
-                    return isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index');
-                });
+                return isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index');
+            });
         }
     }
 

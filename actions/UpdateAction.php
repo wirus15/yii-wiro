@@ -2,6 +2,7 @@
 
 namespace wiro\actions;
 
+use CHttpException;
 use Closure;
 use wiro\helpers\FormHelper;
 
@@ -29,6 +30,10 @@ class UpdateAction extends Action
     {
         $this->model = $this->loadModel($id);
 
+        if (isset($this->accessCheck) && !$this->runClosure($this->accessCheck)) {
+            throw new CHttpException(403, 'You are not authorized to perform this action.');
+        }
+        
         if (isset($this->beforePostAssignment)) {
             $this->runClosure($this->beforePostAssignment);
         }
