@@ -24,16 +24,6 @@ class DbConfigValue extends ActiveRecord
     const BOOLEAN = 4;
     const DATE = 5;
     const DATETIME = 6;
-  
-    /**
-     * Returns the static model of the specified AR class.
-     * @param string $className active record class name.
-     * @return DbConfigValue the static model class
-     */
-    public static function model($className = __CLASS__)
-    {
-	return parent::model($className);
-    }
 
     /**
      * @return string the associated database table name

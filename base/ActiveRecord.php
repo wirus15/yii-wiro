@@ -3,6 +3,7 @@
 namespace wiro\base;
 
 use CActiveRecord;
+use CDbCriteria;
 use CHtml;
 
 /**
@@ -76,9 +77,25 @@ class ActiveRecord extends CActiveRecord
 	}
     }
     
+    /**
+     * 
+     * @param string $nameColumn
+     * @param CDbCriteria|array $criteria
+     * @return array
+     */
     public function listModels($nameColumn, $criteria=array())
     {
         $models = $this ->findAll($criteria);
         return CHtml::listData($models, $this->tableSchema->primaryKey, $nameColumn);
+    }
+    
+    /**
+     * 
+     * @param string $className
+     * @return ActiveRecord
+     */
+    public static function model($className = null)
+    {
+        return parent::model($className ?: get_called_class());
     }
 }

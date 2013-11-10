@@ -10,14 +10,6 @@ use Yii;
 
 class Page extends ActiveRecord
 {
-    /**
-     * @return Page
-     */
-    public static function model($className = __CLASS__)
-    {
-	return parent::model($className);
-    }
-    
     public function tableName()
     {
 	return '{{pages}}';
