@@ -1,7 +1,7 @@
 {
 	"name": "wirus15/yii-wiro",
 	"require" : {
-	    "masterexploder/PHPThumb": "dev-master",
+	    "masterexploder/phpthumb": "dev-master",
 	    "leafo/lessphp": "0.3.*@dev",
 	    "clevertech/YiiBooster": "dev-master",
 	    "swiftmailer/swiftmailer": "5.1.*@dev"
